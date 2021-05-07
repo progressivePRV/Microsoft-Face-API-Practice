@@ -6,8 +6,8 @@ const axios = require('axios');
 // const swaggerJsDoc = require("swagger-jsdoc");
 
 //
-// const key = process.env.Azure_Api_k;
-const key = 'e1f7203e31b04cfc9009b07910c38aab';
+const key = process.env.Azure_Api_k;
+// const key = '';
 const endpoint = "https://face-api-project-for-si.cognitiveservices.azure.com/";
 
 
@@ -147,7 +147,15 @@ const endpoint = "https://face-api-project-for-si.cognitiveservices.azure.com/";
  *                  schema:
  *                      $ref : '#/components/schemas/detectResponse'
  *          400:
- *              description: It will return 
+ *              description: Occurs due to Bad request. Mostly occurs when invalid arguments are provided.
+ *          500:
+ *              description: Internal server error occured. It is very rare error, Mostly due to not abl to get response form Azure API.
+ *          403: 
+ *              description: Occurs due to crossing the Quota limit. As mentioned earlier this API comes with limit.
+ *          408: 
+ *              description: Occurs due to over computation. In other words operation exceeds maximum execution time.
+ *          429: 
+ *              description: Occurs due to exaution of Rate limit.
  *                          
  */
 
@@ -158,6 +166,8 @@ router.post('/detect',(req,res,next)=>{
     // black and white => https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
 
     // let url = 'https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg';
+
+    // bad reques => http://www1.spms.ntu.edu.sg/~frederique/dm2.pdf
 
     console.log("URL=>",req.url);
     console.log("query params=>",req.query);
@@ -188,6 +198,14 @@ router.post('/detect',(req,res,next)=>{
     })
     .catch(err =>{
         console.log("error=>",err.response.data);
+        if(err.response.status==401){
+            return res.status(500).json({
+                'error':{
+                    "code": "Internal error occured",
+                    'message': "Server is unbale to get response from Azure API"
+                    }
+                });
+        }
         res.status(err.response.status).json(err.response.data);
     } );
 });
