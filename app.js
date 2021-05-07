@@ -11,7 +11,7 @@ const swaggerUi = require("swagger-ui-express");
 const app =  express();
 port = 3000;
 host = 'localhost';
-// app.set('view engine','ejs');
+app.set('view engine','ejs');
 
 //setting up the swagger
 const SwaggerOptions = {
