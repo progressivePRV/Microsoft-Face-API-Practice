@@ -9,7 +9,7 @@ const swaggerUi = require("swagger-ui-express");
 
 
 const app =  express();
-port = 8080;
+port = 3000;
 host = 'localhost';
 app.set('view engine','ejs');
 
