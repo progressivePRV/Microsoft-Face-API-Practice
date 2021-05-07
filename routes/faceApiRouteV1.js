@@ -6,7 +6,7 @@ const axios = require('axios');
 // const swaggerJsDoc = require("swagger-jsdoc");
 
 
-const key = "8e7a4980790d4112b69a007bab0349a7";
+const key = preocess.env.Azure_Api_k;
 const endpoint = "https://face-api-project-for-si.cognitiveservices.azure.com/";
 
 
