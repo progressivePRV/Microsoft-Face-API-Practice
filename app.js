@@ -24,7 +24,7 @@ const SwaggerOptions = {
         },
         servers:[
             {
-                url: "http://localhost:3000"
+                url: "http://167.99.122.35:3000"
             }
         ]
     },
@@ -57,21 +57,21 @@ app.get("/",(req,res,next)=>{
 });
 
 
-// app.use((req,res,next)=>{
-//     let err =  new Error('The server cannot locate '+ req.url);
-//     err.status = 404;
-//     next(err);
-// });
-// 
-// app.use((err, req,res,next)=>{
-//     console.log(err.stack);
-//     if(!err.status){
-//         err.status = 500;
-//         err.message = ("Internal server Error");
-//     }
-//     res.status(err.status);
-//     res.render('error',{error:err});
-// });
+app.use((req,res,next)=>{
+    let err =  new Error('The server cannot locate '+ req.url);
+    err.status = 404;
+    next(err);
+});
+
+app.use((err, req,res,next)=>{
+    console.log(err.stack);
+    if(!err.status){
+        err.status = 500;
+        err.message = ("Internal server Error");
+    }
+    res.status(err.status);
+    res.render('error',{error:err});
+});
 
 app.listen(port, ()=>{
     console.log("check out http://"+host+":"+port);

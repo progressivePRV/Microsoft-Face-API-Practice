@@ -149,7 +149,7 @@ const endpoint = "https://face-api-project-for-si.cognitiveservices.azure.com/";
  *          400:
  *              description: Occurs due to Bad request. Mostly occurs when invalid arguments are provided.
  *          500:
- *              description: Internal server error occured. It is very rare error, Mostly due to not abl to get response form Azure API.
+ *              description: Internal server error occured. It is very rare error, Mostly due to not able to get response form Azure API.
  *          403: 
  *              description: Occurs due to crossing the Quota limit. As mentioned earlier this API comes with limit.
  *          408: 
