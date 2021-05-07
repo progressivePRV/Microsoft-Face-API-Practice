@@ -72,7 +72,7 @@ const endpoint = "https://face-api-project-for-si.cognitiveservices.azure.com/";
 
 /**
  * @swagger
- * /Azure_Face_Api/v1/detect:
+ * /FaceAPI/v1/detect:
  *     post:
  *      summary: This return Faces detected in the photo (URL).
  *      description: This takes pubicly accessible photo URI/URL and pass it to Azure Face API. Which then returns detected faces location from top left corner. It also provides the ainformation regaring attributes such as age, gender, headPose, smile, facialHair, glasses, emotion, hair, makeup, occlusion, accessories, blur, exposure, noise and mask. (sometimes attribute retrived may not be accurate) For more information check out <a href="/doc/FaceDetect">Face detect Documentation</a>
@@ -207,7 +207,17 @@ router.post('/detect',(req,res,next)=>{
                 });
         }
         res.status(err.response.status).json(err.response.data);
-    } );
+    })
+    .catch(err => {
+        // Error: if response is not as expected
+        console.log("err=>",err);
+        return res.status(500).json({
+            'error':{
+                "code": "Internal error occured",
+                'message': "Server is unbale to get response from Azure API"
+                }
+            });
+    });
 });
 
 function FaceDetectRestAPI(image_url,half_url, API_key){

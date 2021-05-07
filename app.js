@@ -40,8 +40,8 @@ app.use(express.static('static'));
 app.use(express.urlencoded({extended:true}));
 app.use(morgan('tiny')); // for logs
 
-app.use("/Azure_Face_Api/v1/",apiv1);
-// app.use("/doc/v1/",docv1);
+app.use("/FaceAPI/v1/",apiv1);
+app.use("/doc/v1/",docv1);
 // cache setting
 console.log("starting...");
 app.use(function (req, res, next) {
