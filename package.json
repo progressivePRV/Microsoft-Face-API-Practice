@@ -1,0 +1,39 @@
+{
+  "name": "microsoft-face-api-practice",
+  "version": "1.0.0",
+  "description": "Final Project for System integration",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/progressivePRV/Microsoft-Face-API-Practice.git"
+  },
+  "keywords": [
+    "Azure",
+    "Face",
+    "API",
+    "Azure",
+    "Cognitive",
+    "Services"
+  ],
+  "author": "Prabhav Jani",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/progressivePRV/Microsoft-Face-API-Practice/issues"
+  },
+  "homepage": "https://github.com/progressivePRV/Microsoft-Face-API-Practice#readme",
+  "dependencies": {
+    "@azure/cognitiveservices-face": "^4.2.0",
+    "@azure/ms-rest-js": "^2.4.1",
+    "axios": "^0.21.1",
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0",
+    "swagger-jsdoc": "^6.0.0-rc.6",
+    "swagger-ui-dist": "^3.48.0",
+    "swagger-ui-express": "^4.1.6"
+  }
+}
