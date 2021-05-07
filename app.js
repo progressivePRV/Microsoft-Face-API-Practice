@@ -73,6 +73,6 @@ app.get("/",(req,res,next)=>{
 //     res.render('error',{error:err});
 // });
 
-app.listen(port,host, ()=>{
+app.listen(port, ()=>{
     console.log("check out http://"+host+":"+port);
 });
