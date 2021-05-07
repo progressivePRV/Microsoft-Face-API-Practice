@@ -16,7 +16,7 @@ const SwaggerOptions = {
             version: '1.0.0',
             description: 'This are REST like apis. This still does not have HATEOAS. APIs decscription is generated using swagger <br> This are example endpoints for Microsoft Azure FACE API'
         },
-        hosr:'167.99.122.35:3000',
+        host:'167.99.122.35:3000',
         basePath:'/',
         servers:[
             {
