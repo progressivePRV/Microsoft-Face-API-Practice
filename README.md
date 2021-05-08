@@ -1,7 +1,27 @@
 # Face API
 It is a middleare for trying Microsoft Azure Face API. For trying this you don't need any subscription to Azure, but at the same time it comes with limited access.
 
-## Things to remember
+## Why you should use this API.
+- In today's world Face Detection and its analysis is used in many places. Any one can get much information by just a photo, information such as 
+    -  `age` (not ncessary accurate, but still near to the real value)
+    -  `emotions` (anger, happy, sad and many more)
+    -  `gender` 
+    -  `facial hair` (moustache, beard and sideburns)
+    -  `headPose` (roll/yaw/pitch)
+    -  `hair` (hair color, invisible or bald)
+    -  `makeup` (eye, lip areas are made-up or not.)
+    -  `accessories` (headwear, glasses and mask)
+    -  `mask` (much needed detection during COVID-19 pandemic)
+    -  And much more.
+But, to extract such information you need a very large dataset. Then you need computation power to make a detection model out of it. And at last you need Host machine for detection model to reside and operate. Once running you may also have concern about adding new features to it, worring about updating and  making more accurate model.
+
+All those above mentioned things can take too much of your time. Hence this is were `Face API` (this) comes handy.
+
+- This API helps you to detect Faces in an image. 
+- This API can provide you all the above mentioned information and Much More. 
+- This API only needs URL of publicly available Image. In output it can provide all the above mentioned information.
+
+## Things you should know.
 - No image will be stored. Only the extracted face feature(s) will be stored on server. The faceId is an identifier of the face feature and will be used in "Face - Identify", "Face - Verify", and "Face - Find Similar" `( all three coming soon)`. The stored face features will expire and be deleted at the time specified by faceIdTimeToLive after the original detection call.
 
 - By default Response will only contain "faceId" and "faceRectrangle". 
