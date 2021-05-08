@@ -258,7 +258,7 @@ The number of seconds for the face ID being cached. Supported range from 60 seco
 ```
 
 ## `Error from API`
-Every time if any error occurs it will in format:
+Every time if any error occurs it will in this format:
 ```
 {
     "error": {
