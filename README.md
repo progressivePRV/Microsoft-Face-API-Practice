@@ -102,7 +102,7 @@ Mainly used of modifying response parameters
 
 - `detectionModel` (type: enum ["detection_01", "detection_02", "detection_03"])
 
-  The 'detectionModel' associated with the detected faceIds. Supported 'detectionModel' values include "detection_01", "detection_02" and "detection_03". The default value is "detection_01".
+  The 'detectionModel' associated with the detected faceIds. Supported 'detectionModel' values include "detection_01", "detection_02" and "detection_03". The default value is "detection_01". For choosing Detection model as per your requirenment refer [Things to know](https://github.com/progressivePRV/Microsoft-Face-API-Practice/blob/main/README.md#things-you-should-know)
   
 - `faceIdTimeToLive` (type: integer)
 
