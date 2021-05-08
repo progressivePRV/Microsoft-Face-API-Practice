@@ -1,30 +1,55 @@
 # Face API
 It is a middleare for trying Microsoft Azure Face API. For trying this you don't need any subscription to Azure, but at the same time it comes with limited access.
 
-## Things to remember
+## Why you should use this API ?
+- In today's world Face Detection and its analysis is used in many places. Any one can get much information by just a photo, information such as 
+    -  `age` (not ncessary accurate, but still near to the real value)
+    -  `emotions` (anger, happy, sad and many more)
+    -  `gender` 
+    -  `facial hair` (moustache, beard and sideburns)
+    -  `headPose` (roll/yaw/pitch)
+    -  `hair` (hair color, invisible or bald)
+    -  `makeup` (eye, lip areas are made-up or not.)
+    -  `accessories` (headwear, glasses and mask)
+    -  `mask` (much needed detection during COVID-19 pandemic)
+    -  And much more.
+    
+But, to extract such information you need a very large dataset. Then you need computation power to make a detection model out of it. And at last you need Host machine for detection model to reside and operate. Once running you may also have concern about adding new features to it, worring about updating and  making more accurate model.
+
+All those above mentioned things can take too much of your time. Hence this is were `Face API` (this) comes handy.
+
+- This API helps you to detect Faces in an image. 
+- This API can provide you all the above mentioned information and Much More. 
+- This API only needs URL of publicly available Image. As output it can provide all the above mentioned information.
+
+## ` Things you should know. `
 - No image will be stored. Only the extracted face feature(s) will be stored on server. The faceId is an identifier of the face feature and will be used in "Face - Identify", "Face - Verify", and "Face - Find Similar" `( all three coming soon)`. The stored face features will expire and be deleted at the time specified by faceIdTimeToLive after the original detection call.
 
 - By default Response will only contain "faceId" and "faceRectrangle". 
   - faceId : a unique identifer for different faces in a photo.
   - faceRectrangle : Location of face frame/rectangle on a photo. The location is provided in reference to top left corner and it also provides hight and width of the frame for the detected face.
   - For example
+  - Query and its output
+>  http://167.99.122.35:3000/FaceAPI/v1/detect?image_url=https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
 ```
-{
-  "faceId": "c5c24a82-6845-4031-9d5d-978df9175426",
-  "faceRectangle": {
-            "width": 78,
-            "height": 78,
-            "left": 394,
-            "top": 54
-        }
-}
+[
+  {
+    "faceId": "8ea33e17-f9ee-41c0-bc14-4c9acce065a6",
+    "faceRectangle": {
+      "top": 131,
+      "left": 177,
+      "width": 162,
+      "height": 162
+    }
+  }
+]
 ```
  - You can modify the response by passing optional parameters. Optional parameters include faceId, landmarks, and attributes. Attributes include age, gender, headPose, smile, facialHair, glasses, emotion, hair, makeup, occlusion, accessories, blur, exposure, noise and mask. Some of the results returned for specific attributes may not be highly accurate.
 
  - The minimum detectable face size is 36x36 pixels in an image no larger than 1920x1080 pixels. Images with dimensions higher than 1920x1080 pixels will need a proportionally larger minimum face size.
 
  - Up to 100 faces can be returned for an image. Faces are ranked by face rectangle size from large to small.
-For optimal results when querying Face - Identify, Face - Verify, and Face - Find Similar ('returnFaceId' is true), please use faces that are: frontal, clear, and with a minimum size of 200x200 pixels (100 pixels between eyes).
+For optimal results when querying Face - Identify, Face - Verify, and Face - Find Similar `( all three coming soon)` ('returnFaceId' is true), please use faces that are: frontal, clear, and with a minimum size of 200x200 pixels (100 pixels between eyes).
 
  - Different 'detectionModel' values can be provided. Possible detection models and their information are.
  
@@ -41,7 +66,10 @@ For optimal results when querying Face - Identify, Face - Verify, and Face - Fin
 Note: "Face - Identify", "Face - Verify", and "Face - Find Similar" are not available in this middleware, they are planned in comming soon (future) updates. Till then "recognitionModel" is not useful for current request. Hence you can ingnore it.
 ```
 
-## Inputs
+## ` Inputs For Face API `
+```
+Note: All inputs are query parameters
+```
 
 ### Mandatory inputs
 - `image_url` (type: boolean)
@@ -74,7 +102,7 @@ Mainly used of modifying response parameters
 
 - `detectionModel` (type: enum ["detection_01", "detection_02", "detection_03"])
 
-  The 'detectionModel' associated with the detected faceIds. Supported 'detectionModel' values include "detection_01", "detection_02" and "detection_03". The default value is "detection_01".
+  The 'detectionModel' associated with the detected faceIds. Supported 'detectionModel' values include "detection_01", "detection_02" and "detection_03". The default value is "detection_01". For choosing Detection model as per your requirenment refer [Things to know](https://github.com/progressivePRV/Microsoft-Face-API-Practice/blob/main/README.md#things-you-should-know)
   
 - `faceIdTimeToLive` (type: integer)
 
