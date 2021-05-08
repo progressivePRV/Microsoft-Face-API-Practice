@@ -37,6 +37,8 @@ app.use(express.static('static'));
 app.use(express.urlencoded({extended:true}));
 app.use(morgan('tiny')); // for logs
 
+
+// Trying to use MVC structure, for making code modular and future ready.
 app.use("/FaceAPI/v1/",apiv1);  // match path with its API serving file
 // cache setting
 console.log("starting...");
