@@ -1,15 +1,11 @@
-const router =  require('express').Router();
-const msRest = require("@azure/ms-rest-js");
-const Face = require("@azure/cognitiveservices-face");
-const uuid = require("uuid/v4");
-const axios = require('axios');
-// const swaggerJsDoc = require("swagger-jsdoc");
+const router =  require('express').Router(); // express router for server a specific path, in our case path=> '/FaceAPI/v1/'
+const axios = require('axios'); // used for making request to Azure API
 
-//
-const key = process.env.Azure_Api_k;
-// const key = '';
-const endpoint = "https://face-api-project-for-si.cognitiveservices.azure.com/";
+const key = process.env.Azure_Api_k; // getting key from environment varibale
+const endpoint = "https://face-api-project-for-si.cognitiveservices.azure.com/"; // Azure Face API endPoint
 
+
+// swagger components for schemas, for output and input
 
 /**
  * @swagger
@@ -64,11 +60,8 @@ const endpoint = "https://face-api-project-for-si.cognitiveservices.azure.com/";
 
 
 
+
 //*******************************************************  FACE DETECT API   */
-
-  
-
-
 
 /**
  * @swagger
@@ -161,40 +154,47 @@ const endpoint = "https://face-api-project-for-si.cognitiveservices.azure.com/";
 
 
 router.post('/detect',(req,res,next)=>{
-    let detection_model = "detection_01";
-    // monks => https://storageforsi.blob.core.windows.net/image-container/group_of_monks.jpg
-    // black and white => 
-
+    // checking request URL and query params
     console.log("URL=>",req.url);
     console.log("query params=>",req.query);
-    // res.json("{'result':'success'}");
 
-    let half_url = req.url.toString();
-    let i = half_url.indexOf('?');
-    half_url =  half_url.substring(i+1);
-    console.log("half_url =>"+half_url);
-
-    half_url = '';
-    let image_url = '';
+    let half_url = ''; // for stroing half URL, for Azure face API request and getting all optional parameter passed in query
+    let image_url = ''; // for getting image URL from query paramters
     for (const property in req.query) {
         if(property==='image_url'){
             image_url = req.query[property];
         }else{
             half_url += property+"="+req.query[property]+"&";
         }
-        // console.log(`${property}: ${object[property]}`);
     }
-    console.log("half_url without url=>"+half_url);
+    // checking half_url
+    console.log("half_url without image url=>"+half_url);
 
-    FaceDetectRestAPI(image_url,half_url,key)
+    // axios configuration
+    let config = {
+        method: 'post', 
+        baseURL: endpoint+'face/v1.0/detect?'+half_url,
+        timeout:10000,
+        headers:{'Ocp-Apim-Subscription-Key': key, 'Content-Type': 'application/json'},
+        data:{
+                'url': image_url
+        }
+    }
+    // making request using axios
+    axios(config)
     .then((response) =>{
+        // making log of response
         console.log("response status=>",response.status);
         console.log("resposne=>",response.data);
+        // sending response
         res.json(response.data);
     })
     .catch(err =>{
+        // making log of error
         console.log("error=>",err.response.data);
+        // sending error resposne
         if(err.response.status==401){
+            // occurs only when api key is wrong
             return res.status(500).json({
                 'error':{
                     "code": "Internal error occured",
@@ -215,20 +215,6 @@ router.post('/detect',(req,res,next)=>{
             });
     });
 });
-
-function FaceDetectRestAPI(image_url,half_url, API_key){
-    let config = {
-        method: 'post', 
-        baseURL: endpoint+'face/v1.0/detect?'+half_url,
-        timeout:10000,
-        headers:{'Ocp-Apim-Subscription-Key': API_key, 'Content-Type': 'application/json'},
-        data:{
-                'url': image_url
-        }
-    }
-
-    return axios(config);
-}
 
 //******************************************************** */
 
