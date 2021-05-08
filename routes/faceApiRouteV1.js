@@ -98,7 +98,7 @@ const endpoint = "https://face-api-project-for-si.cognitiveservices.azure.com/";
  *              - detection_01
  *              - detection_02
  *              - detection_03
- *        description: The 'detectionModel' associated with the detected faceIds. Supported 'detectionModel' values include "detection_01", "detection_02" and "detection_03". The default value is "detection_01".   
+ *        description: The 'detectionModel' associated with the detected faceIds. Supported 'detectionModel' values include "detection_01", "detection_02" and "detection_03". The default value is "detection_01" For more information <a href="https://github.com/progressivePRV/Microsoft-Face-API-Practice#things-you-should-know">click here</a>.   
  *      - in: query
  *        name: returnFaceAttributes
  *        required: false
