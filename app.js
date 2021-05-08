@@ -17,7 +17,7 @@ const SwaggerOptions = {
         info: {
             title: 'FACE APIs',
             version: '1.0.0',
-            description: "It is a middleare for trying Microsoft Azure Face API. For trying this you don't need any subscription to Azure, but at the same time it comes with limited access. <br> some Image Urls for Trying: <br> https://storageforsi.blob.core.windows.net/image-container/group_of_monks.jpg <br> https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg   <br> https://storageforsi.blob.core.windows.net/image-container/man1.jpg  <br> https://storageforsi.blob.core.windows.net/image-container/man2.jpg " 
+            description: "It is a middleare for trying Microsoft Azure Face API. For trying this you don't need any subscription to Azure, but at the same time it comes with limited access. For detail information visit <a href='https://github.com/progressivePRV/Microsoft-Face-API-Practice/blob/main/README.md'>Face API Documentation </a> <br> <br> Some Image URLs for Trying: <br> <a href='https://storageforsi.blob.core.windows.net/image-container/group_of_monks.jpg'>group_of_monks </a> <br> <a href='https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg'> A lady's image </a>     <br> <a href='https://storageforsi.blob.core.windows.net/image-container/man1.jpg'>man1</a> <br> <a href='https://storageforsi.blob.core.windows.net/image-container/man2.jpg'>man2</a>  " 
         },
         servers:[
             {
