@@ -20,7 +20,7 @@ const SwaggerOptions = {
         info: {
             title: 'FACE APIs',
             version: '1.0.0',
-            description: 'This are REST like apis. This still does not have HATEOAS. APIs decscription is generated using swagger <br> This are example endpoints for Microsoft Azure FACE API'
+            description: "It is a middleare for trying Microsoft Azure Face API. For trying this you don't need any subscription to Azure, but at the same time it comes with limited access."
         },
         servers:[
             {

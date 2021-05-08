@@ -75,7 +75,7 @@ const endpoint = "https://face-api-project-for-si.cognitiveservices.azure.com/";
  * /FaceAPI/v1/detect:
  *     post:
  *      summary: This return Faces detected in the photo (URL).
- *      description: This takes pubicly accessible photo URI/URL and pass it to Azure Face API. Which then returns detected faces location from top left corner. It also provides the ainformation regaring attributes such as age, gender, headPose, smile, facialHair, glasses, emotion, hair, makeup, occlusion, accessories, blur, exposure, noise and mask. (sometimes attribute retrived may not be accurate) For more information check out <a href="/doc/FaceDetect">Face detect Documentation</a>
+ *      description: This takes pubicly accessible photo URI/URL and pass it to Azure Face API. Which then returns detected faces location from top left corner. It also provides the ainformation regaring attributes such as age, gender, headPose, smile, facialHair, glasses, emotion, hair, makeup, occlusion, accessories, blur, exposure, noise and mask. (sometimes attribute retrived may not be accurate) For more information check out <a href="https://github.com/progressivePRV/Microsoft-Face-API-Practice#face-api">Face API Documentation</a>
  *      parameters:
  *      - in: query
  *        name: image_url
@@ -142,7 +142,7 @@ const endpoint = "https://face-api-project-for-si.cognitiveservices.azure.com/";
  *          - application/json
  *      responses:
  *          200:
- *              description: It will return detected faces location from top left corner. And optional information if asked for as query parameters.
+ *              description: It will return detected faces location from top left corner. And optional information if asked for as query parameters. It can be empty '[]' if no face detected.
  *              application/json:
  *                  schema:
  *                      $ref : '#/components/schemas/detectResponse'
@@ -209,7 +209,7 @@ router.post('/detect',(req,res,next)=>{
         res.status(err.response.status).json(err.response.data);
     })
     .catch(err => {
-        // Error: if response is not as expected
+        // Error: if error response is not as expected
         console.log("err=>",err);
         return res.status(500).json({
             'error':{
