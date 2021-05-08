@@ -66,7 +66,7 @@ const endpoint = "https://face-api-project-for-si.cognitiveservices.azure.com/";
 /**
  * @swagger
  * /FaceAPI/v1/detect:
- *     post:
+ *     get:
  *      summary: This return Faces detected in the photo (URL).
  *      description: This takes pubicly accessible photo URI/URL and pass it to Azure Face API. Which then returns detected faces location from top left corner. It also provides the ainformation regaring attributes such as age, gender, headPose, smile, facialHair, glasses, emotion, hair, makeup, occlusion, accessories, blur, exposure, noise and mask. (sometimes attribute retrived may not be accurate) For more information check out <a href="https://github.com/progressivePRV/Microsoft-Face-API-Practice#face-api">Face API Documentation</a>
  *      parameters:
@@ -153,7 +153,7 @@ const endpoint = "https://face-api-project-for-si.cognitiveservices.azure.com/";
  */
 
 
-router.post('/detect',(req,res,next)=>{
+router.get('/detect',(req,res,next)=>{
     // checking request URL and query params
     console.log("URL=>",req.url);
     console.log("query params=>",req.query);
