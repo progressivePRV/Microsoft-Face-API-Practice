@@ -162,12 +162,8 @@ const endpoint = "https://face-api-project-for-si.cognitiveservices.azure.com/";
 
 router.post('/detect',(req,res,next)=>{
     let detection_model = "detection_01";
-    // monk => https://storageforsi.blob.core.windows.net/image-container/group_of_monks.jpg
-    // black and white => https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg
-
-    // let url = 'https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg';
-
-    // bad reques => http://www1.spms.ntu.edu.sg/~frederique/dm2.pdf
+    // monks => https://storageforsi.blob.core.windows.net/image-container/group_of_monks.jpg
+    // black and white => 
 
     console.log("URL=>",req.url);
     console.log("query params=>",req.query);

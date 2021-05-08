@@ -20,7 +20,7 @@ const SwaggerOptions = {
         info: {
             title: 'FACE APIs',
             version: '1.0.0',
-            description: "It is a middleare for trying Microsoft Azure Face API. For trying this you don't need any subscription to Azure, but at the same time it comes with limited access."
+            description: "It is a middleare for trying Microsoft Azure Face API. For trying this you don't need any subscription to Azure, but at the same time it comes with limited access. <br> some Image Urls for Trying: <br> https://storageforsi.blob.core.windows.net/image-container/group_of_monks.jpg <br> https://upload.wikimedia.org/wikipedia/commons/c/c3/RH_Louise_Lillian_Gish.jpg   <br> https://storageforsi.blob.core.windows.net/image-container/man1.jpg  <br> https://storageforsi.blob.core.windows.net/image-container/man2.jpg " 
         },
         servers:[
             {
