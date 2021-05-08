@@ -257,3 +257,28 @@ The number of seconds for the face ID being cached. Supported range from 60 seco
 ]
 ```
 
+### Error
+Every time if any error occurs it will in format:
+```
+{
+    "error": {
+        "code": "A specific error code",
+        "message": "small message/description regarding error"
+    }
+}
+```
+Posssible error code are:
+
+| Error Code | Error Message |
+| -- | -- |
+| BadArgument | JSON parsing error. Bad or unrecognizable request JSON body. |
+| BadArgument | Invalid argument returnFaceAttributes. Supported values are: age, gender, headPose, smile, facialHair, glasses, emotion, hair, makeup, occlusion, accessories, blur, exposure, noise and mask in a comma-separated format. |
+| BadArgument | 'recognitionModel' is invalid. |
+| BadArgument | 'detectionModel' is invalid. |
+| BadArgument | 'returnFaceAttributes'/'returnLandmarks' is not supported by detection_02. |
+| InvalidURL | Invalid image format or URL. Supported formats include JPEG, PNG, GIF(the first frame) and BMP. |
+| InvalidURL | Failed to download image from the specified URL. Remote server error returned. |
+| InvalidImage | Image size is too small. The valid image file size should be larger than or equal to 1KB. |
+| InvalidImageSize | Image size is too big. The valid image file size should be no larger than 6MB. |
+
+
